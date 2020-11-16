@@ -36,15 +36,17 @@ public class MultiTenantFilter implements Filter {
         
         ReadableRequestWrapper wrapper = new ReadableRequestWrapper((HttpServletRequest)request);
         String body = wrapper.getBody();
-        JSONParser parser = new JSONParser();
-        Object obj = null;
-		try {
-			obj = parser.parse( body );
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-        JSONObject jsonObj = (JSONObject) obj;
-        tenant = (String) jsonObj.get("cmpCode") != null ? (String) jsonObj.get("cmpCode") : tenant;
+        if(body != null && !body.isEmpty()) {
+        	JSONParser parser = new JSONParser();
+        	Object obj = null;
+        	try {
+        		obj = parser.parse( body );
+        	} catch (ParseException e) {
+        		e.printStackTrace();
+        	}
+        	JSONObject jsonObj = (JSONObject) obj;
+        	tenant = (String) jsonObj.get("cmpCode") != null ? (String) jsonObj.get("cmpCode") : tenant;
+        }
 		if (tenant != null) {
             req.setAttribute(tenantKey, tenant);
         } else {

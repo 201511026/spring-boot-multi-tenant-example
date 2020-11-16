@@ -2,6 +2,7 @@ package com.gdb.controller;
 
 import com.gdb.entity.Employee;
 import com.gdb.entity.Person;
+import com.gdb.repository.EmployeeRepository;
 import com.gdb.repository.PersonRepository;
 import com.google.common.collect.Lists;
 
@@ -20,10 +21,12 @@ import java.util.List;
 public class PersonController {
 
     private PersonRepository personRepository;
+    private EmployeeRepository employeeRepository;
 
     @Autowired
-    public PersonController(PersonRepository personRepository) {
+    public PersonController(PersonRepository personRepository, EmployeeRepository employeeRepository) {
         this.personRepository = personRepository;
+        this.employeeRepository = employeeRepository;
     }
 
     @RequestMapping(value = "/people",method = RequestMethod.GET)
@@ -34,9 +37,7 @@ public class PersonController {
     
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<Employee> login(@RequestBody Person param) {
-    	System.out.println("Person :::::::::::: " + param.toString());
-//        List<Person> persons = Lists.newArrayList(this.personRepository.findAll());
-    	Employee employee = new Employee();
+    	Employee employee = this.employeeRepository.findOne(param.getId());
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 }
