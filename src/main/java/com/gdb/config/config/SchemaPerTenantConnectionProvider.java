@@ -3,6 +3,7 @@ package com.gdb.config.config;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.jdbc.connections.spi.MultiTenantConnectionProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
@@ -14,6 +15,9 @@ public class SchemaPerTenantConnectionProvider implements MultiTenantConnectionP
 
     @Autowired
     private DataSource dataSource;
+    
+    @Value("${multitenant.defaultTenant}")
+    String defaultTenant;
 
     @Override
     public Connection getAnyConnection() throws SQLException {
@@ -30,7 +34,7 @@ public class SchemaPerTenantConnectionProvider implements MultiTenantConnectionP
         final Connection connection = this.getAnyConnection();
         try {
         	System.out.println("SET search_path to tenantIdentifier =====================" + tenantIdentifier);
-            connection.createStatement().execute("SET search_path to " + tenantIdentifier);
+            connection.createStatement().execute("SET search_path to " + tenantIdentifier + "," + defaultTenant);
         } catch (SQLException e) {
             throw new HibernateException("Could not alter JDBC connection to specified schema [" + tenantIdentifier + "]",
                     e);

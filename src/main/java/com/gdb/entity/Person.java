@@ -49,4 +49,9 @@ public class Person implements Serializable {
         this.pw = pw;
     }
 
+	@Override
+	public String toString() {
+		return "Person [id=" + id + ", cmpCode=" + cmpCode + ", pw=" + pw + "]";
+	}
+
 }
