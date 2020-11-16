@@ -6,11 +6,11 @@ public class PersonId implements Serializable {
 
 	private Long id;
 
-    private String hdqrtCode;
+    private String cmpCode;
     
-    public PersonId(Long id, String hdqrtCode) {
+    public PersonId(Long id, String cmpCode) {
     	this.id = id;
-    	this.hdqrtCode = hdqrtCode;
+    	this.cmpCode = cmpCode;
     }
    
 }

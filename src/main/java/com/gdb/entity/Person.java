@@ -19,8 +19,8 @@ public class Person implements Serializable {
     private Long id;
 
     @Id
-    @Column(name = "hdqrt_code")
-    private String hdqrtCode;
+    @Column(name = "cmp_code")
+    private String cmpCode;
 
     @Column(name = "pw")
     private String pw;
@@ -31,6 +31,14 @@ public class Person implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public String getCmpCode() {
+        return cmpCode;
+    }
+
+    public void setCmpCode(String cmpCode) {
+        this.cmpCode = cmpCode;
     }
 
     public String getPw() {
