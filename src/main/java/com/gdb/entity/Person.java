@@ -22,11 +22,8 @@ public class Person implements Serializable {
     @Column(name = "hdqrt_code")
     private String hdqrtCode;
 
-    @Column(name = "first_name")
-    private String firstName;
-
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "pw")
+    private String pw;
 
     public Long getId() {
         return id;
@@ -36,19 +33,12 @@ public class Person implements Serializable {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getPw() {
+        return pw;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setPw(String pw) {
+        this.pw = pw;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 }
