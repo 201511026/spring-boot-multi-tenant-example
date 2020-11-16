@@ -16,14 +16,14 @@ public class Person implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, columnDefinition = "BIGINT")
-    private Long id;
+    private Long id; // 아이디
 
     @Id
     @Column(name = "cmp_code")
-    private String cmpCode;
+    private String cmpCode; // 회사코드
 
     @Column(name = "pw")
-    private String pw;
+    private String pw; // 비밀번호
 
     public Long getId() {
         return id;
