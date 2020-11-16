@@ -29,8 +29,6 @@ public class PersonController {
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Person>> fetch() {
         List<Person> persons = Lists.newArrayList(this.personRepository.findAll());
-        System.out.println("MultiTenancyStrategy.SCHEMA ================================= " + MultiTenancyStrategy.SCHEMA);
-        System.out.println("Environment.MULTI_TENANT ================================== " + Environment.MULTI_TENANT);
         return new ResponseEntity<>(persons, HttpStatus.OK);
     }
 }

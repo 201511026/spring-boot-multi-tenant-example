@@ -13,7 +13,7 @@ import javax.persistence.IdClass;
 public class Employee implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, columnDefinition = "BIGINT")
     private Long id;
 
