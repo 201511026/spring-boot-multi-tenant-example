@@ -34,6 +34,12 @@ public class PersonController {
         List<Person> persons = Lists.newArrayList(this.personRepository.findAll());
         return new ResponseEntity<>(persons, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/employee",method = RequestMethod.GET)
+    public ResponseEntity<List<Employee>> employee() {
+    	List<Employee> employee = Lists.newArrayList(this.employeeRepository.findAll());
+    	return new ResponseEntity<>(employee, HttpStatus.OK);
+    }
     
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<Employee> login(@RequestBody Person param) {
